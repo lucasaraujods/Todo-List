@@ -15,19 +15,17 @@ class ToDo {
 }
 
 // Array
-
+let arrayTodos = []
 
 //funções projeto
 
 function CriarToDo(texto,propriedade,array) {
    let objetoTodo = new ToDo(texto, prioridade);
-   const exiteNoArray = array.some(todo => todo.Texto === texto  && todo.Propriedade === propriedade)
-
-   if(!exiteNoArray){
+   if(!array.some(todo => todo.Texto === texto)){
     
-        array.push(objetoTodo)
-        return objetoTodo
-    }
+       array.push(objetoTodo)
+   }
+   return objetoTodo;
 }
 
 function AtualizarToDo(textoAntigo,textoNovo,array) {
@@ -41,25 +39,20 @@ function AtualizarToDo(textoAntigo,textoNovo,array) {
         }
     })
 
-    return atualizado
+    return atualizado;
 }
 
 function ConcluirToDo(array,texto) {
 
- let existeTextoNoObjeto = array.some(todo => {
-
-        if(todo.Texto === texto){
-            todo.Feito = !todo.Feito
-            return true
-
-        }else{
-
-            console.log("O texto não foi encontrado no objeto")
-            return false
-        }
-    })
-
-    return existeTextoNoObjeto
+ let concluido = false;
+  array.forEach(todo => {
+    if(todo.Texto === texto){
+      todo.Feito = true;
+      concluido = true;
+    }
+  })
+ return concluido;
+}
 }
 
 function ExcluirToDo(array,texto) {
@@ -83,10 +76,9 @@ function ExcluirToDo(array,texto) {
 function PesquisarToDo(array,texto) {
  
  let pesquisa = false 
-// como eu faço para pesquiar os objetos como manda no exercicio?
    array.ForEach(todo => {
 
-        if(todo.Texto.includes(texto)){
+        if(todo.Texto.includes === texto)){
 
             pesquisa = true
 
