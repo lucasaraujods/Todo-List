@@ -1,7 +1,17 @@
 // Clase
 
 class ToDo {
+ 
+    Texto = "" 
+    Propriedade= ""
+    Feito = false
 
+    //Crie um construtor que receba as propriedades Texto e Prioridade;
+    constructor(texto, propriedade){
+
+        this.Texto = texto
+        this.Propriedade = propriedade
+    }
 }
 
 // Array
@@ -9,31 +19,90 @@ class ToDo {
 
 //funções projeto
 
-function CriarToDo() {
+function CriarToDo(texto,propriedade,array) {
+   let objetoTodo = new ToDo(texto, prioridade);
+   const exiteNoArray = array.some(todo => todo.Texto === texto  && todo.Propriedade === propriedade)
 
+   if(!exiteNoArray){
+    
+        array.push(objetoTodo)
+        return objetoTodo
+    }
 }
 
-function AtualizarToDo() {
-
-}
-
-function ConcluirToDo() {
-
-}
-
-function ExcluirToDo() {
-
-}
-
-function PesquisarToDo() {
+function AtualizarToDo(textoAntigo,textoNovo,array) {
+  let atualizado = false 
  
+      array.some(todo => {
+        if(todo.Texto === textoAntigo){
+        // aqui atribuimos dentro do objeto todo e na propriedade texto o novo texto passado no parametro
+            todo.Texto = textoNovo
+            atualizado = true
+        }
+    })
+
+    return atualizado
 }
 
-function OrdenarCrescente() {
-  
+function ConcluirToDo(array,texto) {
+
+ let existeTextoNoObjeto = array.some(todo => {
+
+        if(todo.Texto === texto){
+            todo.Feito = !todo.Feito
+            return true
+
+        }else{
+
+            console.log("O texto não foi encontrado no objeto")
+            return false
+        }
+    })
+
+    return existeTextoNoObjeto
 }
-function OrdenarDecrescente() {
-  
+
+function ExcluirToDo(array,texto) {
+ 
+    let index 
+    let removido = false
+    
+    array.ForEach(todo =>{
+
+        if(todo.Texto === texto){
+
+            index = array.indexOf(todo)
+            removido = true
+        }
+    })
+
+    array.splice(index,1)
+    return removido 
+}
+
+function PesquisarToDo(array,texto) {
+ 
+ let pesquisa = false 
+// como eu faço para pesquiar os objetos como manda no exercicio?
+   array.ForEach(todo => {
+
+        if(todo.Texto.includes(texto)){
+
+            pesquisa = true
+
+        }
+    })
+
+    return pesquisa
+}
+
+function OrdenarCrescente(array) {
+  array.sort((a, b) => a.Propriedade - b.Propriedade)
+  return array
+}
+function OrdenarDecrescente(array) {
+  array.sort((b,a) => b.Propriedade - a.Propriedade)
+  return array
 }
 
 // Seleção de elementos
