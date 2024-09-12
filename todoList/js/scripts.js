@@ -1,14 +1,12 @@
-// Clase
-
+// Classe
 class ToDo {
  
     Texto = "" 
     Propriedade= ""
     Feito = false
 
-    //Crie um construtor que receba as propriedades Texto e Prioridade;
+    // Cria um construtor que receba as propriedades Texto e Prioridade;
     constructor(texto, propriedade){
-
         this.Texto = texto
         this.Propriedade = propriedade
     }
@@ -17,85 +15,80 @@ class ToDo {
 // Array
 let arrayTodos = []
 
-//funções projeto
+// Funções do projeto
 
-function CriarToDo(texto,propriedade,array) {
-   let objetoTodo = new ToDo(texto, prioridade);
+function CriarToDo(texto, propriedade, array) {
+   let objetoTodo = new ToDo(texto, propriedade);
    if(!array.some(todo => todo.Texto === texto)){
-    
        array.push(objetoTodo)
    }
    return objetoTodo;
 }
 
-function AtualizarToDo(textoAntigo,textoNovo,array) {
-  let atualizado = false 
+function AtualizarToDo(textoAntigo, textoNovo, array) {
+  let atualizado = false;
  
-      array.some(todo => {
-        if(todo.Texto === textoAntigo){
-        // aqui atribuimos dentro do objeto todo e na propriedade texto o novo texto passado no parametro
-            todo.Texto = textoNovo
-            atualizado = true
-        }
-    })
+  array.some(todo => {
+    if(todo.Texto === textoAntigo){
+      // Aqui atribuimos dentro do objeto todo e na propriedade texto o novo texto passado no parâmetro
+      todo.Texto = textoNovo;
+      atualizado = true;
+    }
+  });
 
-    return atualizado;
+  return atualizado;
 }
 
-function ConcluirToDo(array,texto) {
-
- let concluido = false;
+function ConcluirToDo(array, texto) {
+  let concluido = false;
   array.forEach(todo => {
     if(todo.Texto === texto){
       todo.Feito = true;
       concluido = true;
     }
-  })
- return concluido;
-}
-}
-
-function ExcluirToDo(array,texto) {
- 
-    let index 
-    let removido = false
-    
-    array.ForEach(todo =>{
-
-        if(todo.Texto === texto){
-
-            index = array.indexOf(todo)
-            removido = true
-        }
-    })
-
-    array.splice(index,1)
-    return removido 
+  });
+  return concluido;
 }
 
-function PesquisarToDo(array,texto) {
- 
- let pesquisa = false 
-   array.ForEach(todo => {
+function ExcluirToDo(array, texto) {
+  let index;
+  let removido = false;
+  
+  array.forEach(todo => {
+    if(todo.Texto === texto){
+      index = array.indexOf(todo);
+      removido = true;
+    }
+  });
 
-        if(todo.Texto.includes === texto)){
+  if (removido) {
+    array.splice(index, 1);
+  }
+  return removido;
+}
 
-            pesquisa = true
+function PesquisarToDo(array, texto) {
+  let pesquisa = false;
+  
+  array.forEach(todo => {
+    if(todo.Texto.includes(texto)){
+      pesquisa = true;
+    }
+  });
 
-        }
-    })
-
-    return pesquisa
+  return pesquisa;
 }
 
 function OrdenarCrescente(array) {
-  array.sort((a, b) => a.Propriedade - b.Propriedade)
-  return array
+  array.sort((a, b) => a.Propriedade - b.Propriedade);
+  return array;
 }
+
 function OrdenarDecrescente(array) {
-  array.sort((b,a) => b.Propriedade - a.Propriedade)
-  return array
+  array.sort((a, b) => b.Propriedade - a.Propriedade);
+  return array;
 }
+
 
 // Seleção de elementos
 const todoForm = document.querySelector("#todo-form");
