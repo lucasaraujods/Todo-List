@@ -2,13 +2,13 @@
 class ToDo {
  
     Texto = "" 
-    Propriedade= ""
+    Prioridade= ""
     Feito = false
 
     // Cria um construtor que receba as propriedades Texto e Prioridade;
-    constructor(texto, propriedade){
+    constructor(texto, prioridade){
         this.Texto = texto
-        this.Propriedade = propriedade
+        this.Propriedade = prioridade
     }
 }
 
@@ -17,8 +17,8 @@ let arrayTodos = []
 
 // Funções do projeto
 
-function CriarToDo(texto, propriedade, array) {
-   let objetoTodo = new ToDo(texto, propriedade);
+function CriarToDo(texto, prioridade, array) {
+   let objetoTodo = new ToDo(texto,prioridade)
    if(!array.some(todo => todo.Texto === texto)){
        array.push(objetoTodo)
    }
@@ -43,8 +43,14 @@ function ConcluirToDo(array, texto) {
   let concluido = false;
   array.forEach(todo => {
     if(todo.Texto === texto){
-      todo.Feito = true;
-      concluido = true;
+      
+      if(todo.Feito){
+        todo.Feito = false 
+      }
+      else{
+        todo.Feito = true
+      }
+      concluido = true
     }
   });
   return concluido;
@@ -88,7 +94,6 @@ function OrdenarDecrescente(array) {
   array.sort((a, b) => b.Propriedade - a.Propriedade);
   return array;
 }
-
 
 // Seleção de elementos
 const todoForm = document.querySelector("#todo-form");
