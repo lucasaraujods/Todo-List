@@ -20,7 +20,3 @@ Este é um projeto de **Todo List** que permite ao usuário gerenciar suas taref
 
 Fique à vontade para abrir uma issue ou enviar um pull request caso queira melhorar algo no projeto.
 Escola Dodev usando o git clone na contribuição deste fork.
-
-## Contato
-
-Para dúvidas ou sugestões, você pode entrar em contato através do meu GitHub: [lucasaraujods](https://github.com/lucasaraujods).
